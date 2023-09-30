@@ -112,7 +112,7 @@ p {
 section {
     padding-top:50px;
     padding-bottom: 50px;
-    background: url(../img/bg.gif);
+    background-image: url(../img/bg.gif);
     height: 100%;
     display: block;
 }
@@ -138,7 +138,7 @@ font-size: 18px;
 
 #home-sec { 
   
-background: url(../img/1.jpg) no-repeat 50% 50%;
+background: url(../img/bg.gif) no-repeat 50% 50%;
 background-attachment: fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
