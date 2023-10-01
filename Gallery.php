@@ -79,36 +79,46 @@
     <!-- PORTFOLIO SECTION-->
     <section id="port-sec">
        <div class="container">
-           <center><h4>GALERIAS DE COSPLAYS/OUTFITS!!!</h4></center>
-           <div class="row g-pad-bottom">
-                <div class="col-md-10 col-md-offset-1 col-sm-12">
-                    <ul class="portfolio-items col-3">
+           <center>
+                <h4>GALERIAS DE COSPLAYS/OUTFITS!!!</h4>
+           </center>
+           <form action="SingleGallery.php" method="POST" id="miFormulario">
+               <div class="row g-pad-bottom">
+                    <div class="col-md-10 col-md-offset-1 col-sm-12">
+                        <ul class="portfolio-items col-3">
 
-                        <!-- Gallery Item -->
-                        
-                        <?php
-                            $imageDirectory = 'Cosplays/'; // Ruta del directorio de imágenes
+                            <!-- Gallery Item -->
+                            <?php
+                                $imageDirectory = 'Miniaturas/'; // Ruta del directorio de imágenes
 
-                            // Obtén la lista de archivos en el directorio
-                            $files = scandir($imageDirectory);
+                                // Obtén la lista de archivos en el directorio
+                                $files = scandir($imageDirectory);
 
-                            // Filtra los archivos para asegurarte de que sean imágenes (puedes agregar más extensiones)
-                            $imageFiles = array_filter($files, function ($file) {
-                                return preg_match("/\.(jpg|jpeg|png|gif)$/i", $file);
-                            });
+                                // Filtra los archivos para asegurarte de que sean imágenes (puedes agregar más extensiones)
+                                $imageFiles = array_filter($files, function ($file) {
+                                    return preg_match("/\.(jpg|jpeg|png|gif)$/i", $file);
+                                });
 
-                            // Genera dinámicamente los elementos <img>
-                            foreach ($imageFiles as $file) {
-                                echo '<li class="portfolio-item"><div class="item-main"><div class="portfolio-image">';
-                                echo '<img src="' . $imageDirectory . $file . '" alt="Imagen" />';
-                                echo '</div></div></li>';   
-                            }
-                        ?>
-                        
-                        <!-- Fin gallery item -->         
-                    </ul>
-                </div>
-           </div>
+                                // Genera dinámicamente los elementos <img>
+                                foreach ($imageFiles as $file) {
+                                    $nombreGaleria = strtok($file, '.');
+                                    echo '
+                                        <li class="portfolio-item">
+                                            <div class="item-main">
+                                                <div class="portfolio-image">
+                                                    <img src="' . $imageDirectory . $file . '" />
+                                                    <button name="nombreGaleria" value="'.$nombreGaleria.'">Ver galeria</button>
+                                                </div>
+                                            </div>
+                                        </li>';   
+                                }
+                            ?>
+                            <!-- Fin gallery item -->
+
+                        </ul>
+                    </div>
+               </div>
+           </form>
        </div>
    </section>
      <!-- END PORTFOLIO SECTION-->
